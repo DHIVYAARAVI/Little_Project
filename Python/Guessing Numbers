@@ -1,1 +1,47 @@
+def rand(a,b,num):
+    print("I have been guessing a number between", a , "to", b ,"and you have 10 attempts to guess it.\nAll the Best!\n")
+    guess = int(input("Any guesses!!!: "))
+    guesstaken , won = 0 , 0
+
+    while guesstaken <10 :
+        if guess > b :
+            print("The value is beyond the range\n")
+            guesstaken += 1;
+            guess = int(input("Any guesses!!!: "))
+            continue
+        if guess == num:
+            print("wow, Your answer is correct\n")
+            return 1
+            break
+        elif guess < num:
+            print("Guess higher number\n")
+        elif guess > num:
+            print("Guess lower number\n")
+        guesstaken += 1;
+        guess = int(input("Any guesses!!!: "))
+
+def vic(won):
+    if(won == 1):
+        print("congrats for your victory!!!\n")
+    else:
+        print("Sorry for your Bad Luck.\n")
+    c = input("Do you want to play the game again??? (Y/N)")
+    if c== "Y" or c== "y":
+        games()
+
+
+def games():
+    a,b = map(int,input("\nEnter the range of the values: ").split())     # which is the syntax for multiple inputs
+    num = random.randint(a,b)
+    won = rand(a,b,num)
+    vic(won)
+
+
+import random
+
+name = input("\nHello, What is your name?? ")
+print("\nWelcome to Number Guessing Game " + name +"\n")
+games()
+
+print("\nThanks for playing the game")
 
